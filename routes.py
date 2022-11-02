@@ -2,6 +2,14 @@ from flask import render_template, request
 from app import app, users_list
 
 
+@app.route('/users/<int:id>')
+def show(id):
+    return render_template(
+        'users/show.html',
+        id=id,
+    )
+
+
 @app.route('/users')
 def users():
     term = request.args.get('term') or ''
